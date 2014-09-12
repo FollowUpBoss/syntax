@@ -1,0 +1,38 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "070954e5cb41cef559585f0143989e49",
+    "packages": [
+        {
+            "name": "spriebsch/phpca",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spriebsch/phpca.git",
+                "reference": "master"
+            },
+            "type": "library",
+            "time": "2010-02-13 11:48:55"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "spriebsch/phpca": 20
+    },
+    "prefer-stable": false,
+    "platform": [
+
+    ],
+    "platform-dev": [
+
+    ]
+}
