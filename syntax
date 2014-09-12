@@ -1,0 +1,56 @@
+#!/usr/bin/php
+<?php
+/**
+* FollowUpBoss: Real Estate Lead Management Software.
+*
+* @author        Anthony Gentile <anthony@followupboss.com>
+* @copyright     Copyright (c) 2014, Enchant LLC.
+* @license       Property of Enchant LLC. All rights reserved.
+*/
+namespace FUBSyntax;
+
+error_reporting(E_ALL | E_STRICT);
+set_time_limit(0);
+declare(ticks = 20);
+
+require 'vendor/autoload.php';
+require 'syntax.php';
+
+use Aura\Cli\CliFactory;
+use Aura\Cli\Status;
+use Aura\Cli\Stdio\Formatter;
+use Aura\Cli\Stdio;
+
+// have to extend aura handle because our dev
+// environments don't have posix_isatty function available
+class Handle extends \Aura\Cli\Stdio\Handle {
+    protected function setPosix($posix) {
+        return true;
+    }
+}
+
+$stdin  = 'php://stdin';
+$stdout = 'php://stdout';
+$stderr = 'php://stderr';
+$stdio = new Stdio(
+    new Handle($stdin, 'r'),
+    new Handle($stdout, 'w+'),
+    new Handle($stderr, 'w+'),
+    new Formatter
+);
+
+$cliFactory = new CliFactory;
+$context = $cliFactory->newContext($GLOBALS);
+$getopt = $context->getopt(array());
+
+$path = $getopt->get(1);
+
+if (!$path) {
+    $stdio->errln("<<red>>Path to file/directory is required.<<reset>>");
+    exit(Status::USAGE);
+}
+
+$syntax = new Syntax();
+$syntax->run($path, $stdio);
+
+?>

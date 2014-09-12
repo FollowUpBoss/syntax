@@ -14,6 +14,8 @@
         }
     ],
     "require": {
-        "spriebsch/phpca": "dev-master"
+        "spriebsch/phpca": "dev-master",
+        "aura/autoload": "dev-develop-2",
+        "aura/cli": "dev-develop-2"
     }
 }
