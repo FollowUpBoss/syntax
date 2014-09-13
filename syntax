@@ -21,7 +21,7 @@ use Aura\Cli\Status;
 use Aura\Cli\Stdio\Formatter;
 use Aura\Cli\Stdio;
 
-// have to extend aura handle because our dev
+// have to extend Aura\Cli\Stdio\Handle because our dev
 // environments don't have posix_isatty function available
 class Handle extends \Aura\Cli\Stdio\Handle {
     protected function setPosix($posix) {

@@ -1,0 +1,52 @@
+#!/bin/bash
+# FUB syntax pre-commit hook for git.
+#
+# @author Anthony Gentile <anthony@followupboss.com>
+
+SCRIPT_PATH="`dirname \"$0\"`"
+SCRIPT_PATH="`( cd \"$SCRIPT_PATH\" && pwd )`"
+
+# some basic detection for if we are loading from .git/hooks
+# aka a git command is invoking this script, adjust for symlink
+# adjust as needed per project
+if [[ ${SCRIPT_PATH} == *.git* ]]
+then
+    BASE_PATH="`( cd \"$SCRIPT_PATH\" && cd ../../ && pwd )`"
+else
+    BASE_PATH="`( cd \"$SCRIPT_PATH\" && cd ../../../ && pwd )`"
+fi
+
+PROJECT_PATH="${BASE_PATH}/apps/richdesk"
+SYNTAX="${BASE_PATH}/libraries/lithium/console/li3"
+
+# comma sperated list of paths to ignore
+IGNORE="${BASE_PATH}/libraries"
+arrIG=(${IGNORE//,/ })
+
+if `git rev-parse --verify HEAD >/dev/null 2>&1`
+then
+    AGAINST=HEAD
+else
+    # Initial commit: diff against an empty tree object
+    AGAINST=4b825dc642cb6eb9a060e54bf8d69288fbee4904
+fi
+
+EXIT_STATUS=0
+PROJECT=`pwd`
+
+for FILE in `git diff-index --name-only --diff-filter=AM ${AGAINST}`
+do
+
+    # do no check ignored paths
+    for IGF in $arrIG
+    do
+        if [[ "${PROJECT}/${filename}" == *$IGF* ]]; then
+            continue 2
+        fi
+    done
+
+    cd $PROJECT_PATH && $SYNTAX ${PROJECT}/${FILE}
+    test $? != 0 && EXIT_STATUS=1
+done
+
+exit $EXIT_STATUS
