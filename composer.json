@@ -1,20 +1,5 @@
 {
-    "repositories": [
-        {
-            "type":"package",
-            "package": {
-              "name": "spriebsch/phpca",
-              "version":"dev-master",
-              "source": {
-                  "url": "https://github.com/spriebsch/phpca.git",
-                  "type": "git",
-                  "reference":"master"
-                }
-            }
-        }
-    ],
     "require": {
-        "spriebsch/phpca": "dev-master",
         "aura/autoload": "dev-develop-2",
         "aura/cli": "dev-develop-2"
     }

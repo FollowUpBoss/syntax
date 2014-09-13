@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9d8903b5ab7eca5e4017ecc96e1be8f3",
+    "hash": "c807e29b5885fde62680ccacabc5a04b",
     "packages": [
         {
             "name": "aura/autoload",
@@ -114,17 +114,6 @@
                 "stdio"
             ],
             "time": "2014-09-05 16:10:32"
-        },
-        {
-            "name": "spriebsch/phpca",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spriebsch/phpca.git",
-                "reference": "master"
-            },
-            "type": "library",
-            "time": "2010-02-13 11:48:55"
         }
     ],
     "packages-dev": [
@@ -135,7 +124,6 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "spriebsch/phpca": 20,
         "aura/autoload": 20,
         "aura/cli": 20
     },
