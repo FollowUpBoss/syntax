@@ -45,7 +45,11 @@ class Syntax implements ProgressPrinterInterface {
         $file = __DIR__ . '/fub-standard.ini';
 
         $config = new Configuration(getcwd());
-        $config->setStandard(parse_ini_file($file, true));
+        $parsed = parse_ini_file($file, true);
+        if ($parsed['PHPca']['additional_rules'] == 'rules') {
+            $parsed['PHPca']['additional_rules'] = __DIR__ . '/rules';
+        }
+        $config->setStandard($parsed);
         $config->setConfiguration(array());
 
         $php = PHP_BINDIR . '/' . 'php';
