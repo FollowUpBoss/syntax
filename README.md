@@ -1,6 +1,13 @@
 Follow Up Boss Syntax Checker
+=============================
 
-* * *
+### Installation ###
+
+```
+composer update
+```
+
+### Usage ###
 
 ```
 syntax path/to/file/or/folder
