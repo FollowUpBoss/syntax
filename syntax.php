@@ -8,7 +8,7 @@
 */
 namespace FUBSyntax;
 
-require dirname(__FILE__) . '/lib/spriebsch/phpca/src/Autoload.php';
+require dirname(__FILE__) . '/lib/phpca/src/Autoload.php';
 
 use Exception;
 use spriebsch\PHPca\Result;
