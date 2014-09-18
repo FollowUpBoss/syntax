@@ -222,10 +222,11 @@ class File extends \SplDoublyLinkedList implements \SeekableIterator
     /**
      * Adds a token
      *
+     * @param mixed $index
      * @param Token $token
      * @return null
      */
-    public function add(Token $token)
+    public function add($index, Token $token)
     {
         $this->toString = null;
 
