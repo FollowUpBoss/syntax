@@ -226,14 +226,11 @@ class File extends \SplDoublyLinkedList implements \SeekableIterator
      * @param Token $token
      * @return null
      */
-    public function add(Token $index, Token $token = null)
+    public function add($index, $token = null)
     {
-        if (PHP_MAJOR_VERSION == 5 && PHP_MINOR_VERSION < 5) {
-            $token = $index;
-        }
         $this->toString = null;
 
-        parent::push($token);
+        parent::push($index);
     }
 
     /**
