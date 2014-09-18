@@ -50,6 +50,10 @@ if (!$path) {
 }
 
 $syntax = new Syntax();
-$syntax->run($path, $stdio);
+if ($syntax->run($path, $stdio)) {
+    exit(Status::SUCCESS);
+} else {
+    exit(Status::FAILURE);
+}
 
 ?>
