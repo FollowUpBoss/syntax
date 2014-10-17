@@ -18,15 +18,8 @@ require dirname(__FILE__) . '/syntax.php';
 use Aura\Cli\CliFactory;
 use Aura\Cli\Status;
 use Aura\Cli\Stdio\Formatter;
+use Aura\Cli\Stdio\Handle;
 use Aura\Cli\Stdio;
-
-// have to extend Aura\Cli\Stdio\Handle because our dev
-// environments don't have posix_isatty function available
-class Handle extends \Aura\Cli\Stdio\Handle {
-    protected function setPosix($posix) {
-        return true;
-    }
-}
 
 $stdin  = 'php://stdin';
 $stdout = 'php://stdout';

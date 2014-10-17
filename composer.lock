@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/auraphp/Aura.Autoload.git",
-                "reference": "30687e2d3d3ef033949a2f96c4c5c97dca52dd6e"
+                "reference": "d7fac0bc5c06c2f934f468cc33fefe32826defde"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/auraphp/Aura.Autoload/zipball/30687e2d3d3ef033949a2f96c4c5c97dca52dd6e",
-                "reference": "30687e2d3d3ef033949a2f96c4c5c97dca52dd6e",
+                "url": "https://api.github.com/repos/auraphp/Aura.Autoload/zipball/d7fac0bc5c06c2f934f468cc33fefe32826defde",
+                "reference": "d7fac0bc5c06c2f934f468cc33fefe32826defde",
                 "shasum": ""
             },
             "require": {
@@ -48,7 +48,7 @@
                 }
             ],
             "description": "Provides a PSR-4 compliant autoloader implementation.",
-            "homepage": "https://github.com/auraphp/Aura.Autoload/releases",
+            "homepage": "https://github.com/auraphp/Aura.Autoload",
             "keywords": [
                 "PSR-4",
                 "SPL autoloader",
@@ -56,7 +56,7 @@
                 "autoloader",
                 "class loader"
             ],
-            "time": "2014-09-05 16:07:13"
+            "time": "2014-10-04 20:15:57"
         },
         {
             "name": "aura/cli",
@@ -64,12 +64,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/auraphp/Aura.Cli.git",
-                "reference": "80e97a2aa6a47653e72cf468e1947ce76a5ffa7a"
+                "reference": "9fe54a204f055ac6bc80ebb546711b9c2555d772"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/auraphp/Aura.Cli/zipball/80e97a2aa6a47653e72cf468e1947ce76a5ffa7a",
-                "reference": "80e97a2aa6a47653e72cf468e1947ce76a5ffa7a",
+                "url": "https://api.github.com/repos/auraphp/Aura.Cli/zipball/9fe54a204f055ac6bc80ebb546711b9c2555d772",
+                "reference": "9fe54a204f055ac6bc80ebb546711b9c2555d772",
                 "shasum": ""
             },
             "require": {
@@ -113,7 +113,7 @@
                 "options",
                 "stdio"
             ],
-            "time": "2014-09-05 16:10:32"
+            "time": "2014-09-27 21:16:39"
         }
     ],
     "packages-dev": [
