@@ -112,7 +112,7 @@ class Linter
 
         $output = trim(shell_exec($cmd));
 
-        if (substr($output, 0, 5) != 'PHP 5') {
+        if (substr($output, 0, 3) != 'PHP') {
             throw new LinterException('PHP executable ' . $this->phpExecutable . ' is not a PHP executable');
         }
     }
