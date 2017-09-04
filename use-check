@@ -1,4 +1,17 @@
+#!/usr/bin/php
 <?php
+/**
+* FollowUpBoss: Real Estate Lead Management Software.
+*
+* @author        Kuno Woudt <kuno@followupboss.com>
+* @copyright     Copyright (c) 2017, Enchant LLC.
+* @license       Property of Enchant LLC. All rights reserved.
+*
+* This file requires the ast extension, see:
+*
+*     https://github.com/nikic/php-ast#installation
+*
+*/
 
 class Check {
 
