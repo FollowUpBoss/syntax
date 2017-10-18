@@ -19,12 +19,20 @@ class Check {
 
     public $verbose = false;
 
+    public $debug = false;
+
     public function __construct($filename) {
         $this->filename = $filename;
     }
 
     public function log($priority, $msg, $node) {
-        $prefix = preg_replace(",^/var/www/fub/,", "", $this->filename)
+        if ($priority == "warning") {
+            $prefix = "[" . chr(27) . "[33;1mwarn" . chr(27) . "[0m] ";
+        } else {
+            $prefix = "[" . chr(27) . "[31mfail" . chr(27) . "[0m] ";
+        }
+
+        $prefix .= preg_replace(",^/var/www/fub/,", "", $this->filename)
             . ":" . $node->lineno . " " . strtoupper($priority) . ": ";
 
         $this->exitCode = 1;
@@ -70,15 +78,32 @@ class Check {
                 $imports[$importName] = $i;
             }
 
+            // Find classes used in Catch()
+            if ($i->kind == ast\AST_CATCH
+                && !empty($i->children["class"])
+                && $i->children["class"]->kind == ast\AST_NAME_LIST
+            ) {
+                foreach ($i->children['class']->children as $child) {
+                    $key = $child->children["name"];
+
+                    if (empty($classUsed[$key])) {
+                        $classUsed[$key] = $i;
+                    }
+                }
+            }
+
+            // Find classes used elsewhere
             if (!empty($i->children["class"])
                 && !empty($i->children["class"]->children["name"])
                 && $i->children["class"]->kind == ast\AST_NAME
             ) {
                 $key = $i->children["class"]->children["name"];
 
-                /* echo  "className: $key, kind: " */
-                /*     . ast\get_kind_name($i->kind) . ", " */
-                /*     . ast\get_kind_name($i->children["class"]->kind) . "\n"; */
+                if ($this->debug) {
+                    echo  "className: $key, kind: "
+                        . ast\get_kind_name($i->kind) . ", "
+                        . ast\get_kind_name($i->children["class"]->kind) . "\n";
+                }
 
                 if (empty($classUsed[$key])) {
                     $classUsed[$key] = $i;
