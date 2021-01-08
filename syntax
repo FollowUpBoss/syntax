@@ -35,18 +35,26 @@ $cliFactory = new CliFactory;
 $context = $cliFactory->newContext($GLOBALS);
 $getopt = $context->getopt(array());
 
-$path = $getopt->get(1);
+$pos = 1;
+$checked = 0;
+$errors = 0;
 
-if (!$path) {
+while (($path = $getopt->get($pos++))) {
+    $syntax = new Syntax();
+    if (!$syntax->run($path, $stdio)) {
+        $errors++;
+    }
+
+    $checked++;
+}
+
+if (!$checked && !$path) {
     $stdio->errln("<<red>>Path to file/directory is required.<<reset>>");
     exit(Status::USAGE);
 }
 
-$syntax = new Syntax();
-if ($syntax->run($path, $stdio)) {
-    exit(Status::SUCCESS);
-} else {
+if ($errors > 0) {
     exit(Status::FAILURE);
+} else {
+    exit(Status::SUCCESS);
 }
-
-?>
