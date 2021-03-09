@@ -36,7 +36,7 @@ class DependencyIsUsedRule extends Rule
                 }
                 $this->file->next();
             }
-            $name = end($parts);
+            $name = preg_quote(end($parts), '/');
 
             $patterns = array(
                 "new {$name}\(",
