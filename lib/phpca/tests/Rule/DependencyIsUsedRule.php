@@ -16,7 +16,7 @@ class DependencyIsUedRuleTest extends AbstractRuleTest
         $this->result->addFile($filename);
     }
 
-	/**
+    /**
      * @covers \spriebsch\PHPca\Rule\DependencyIsUsedRule
      */
     public function testDetect()
@@ -31,7 +31,7 @@ class DependencyIsUedRuleTest extends AbstractRuleTest
         $this->assertEquals(1, $this->result->getNumberOfViolations());
     }
 
-	/**
+    /**
      * @covers \spriebsch\PHPca\Rule\DependencyIsUsedRule
      */
     public function testDetectInstanceof()
@@ -42,11 +42,11 @@ class DependencyIsUedRuleTest extends AbstractRuleTest
 
         $rule->check($this->file, $this->result);
 
-		$this->assertFalse($this->result->hasViolations());
+        $this->assertFalse($this->result->hasViolations());
         $this->assertEquals(0, $this->result->getNumberOfViolations());
     }
 
-	/**
+    /**
      * @covers \spriebsch\PHPca\Rule\DependencyIsUsedRule
      */
     public function testDetectTypeHint()
@@ -57,7 +57,22 @@ class DependencyIsUedRuleTest extends AbstractRuleTest
 
         $rule->check($this->file, $this->result);
 
-		$this->assertFalse($this->result->hasViolations());
+        $this->assertFalse($this->result->hasViolations());
+        $this->assertEquals(0, $this->result->getNumberOfViolations());
+    }
+
+    /**
+     * @covers \spriebsch\PHPca\Rule\DependencyIsUsedRule
+     */
+    public function testDetectBeegTypeHint()
+    {
+        $this->init(__DIR__ . '/../_testdata/DependencyIsUsedRule/Neuronoid.php');
+
+        $rule = new DependencyIsUsedRule();
+
+        $rule->check($this->file, $this->result);
+
+        $this->assertFalse($this->result->hasViolations());
         $this->assertEquals(0, $this->result->getNumberOfViolations());
     }
 }
